@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asklegal - Your AI Legal Assistant for Employment Law</title>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #f4f4f4;
+            --text-color: #333;
+            --accent-color: #3c3d3e;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2em;
+            text-align: center;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 0.5em;
+            font-size: 2.5em;
+        }
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1em;
+            margin-top: 1em;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: var(--accent-color);
+            text-decoration: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #ddd;
+        }
+        main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2em;
+            margin-top: 2em;
+        }
+        .chat-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .chat-window {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 1em;
+            height: 300px;
+            overflow-y: scroll;
+            margin-bottom: 1em;
+        }
+        .user-input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #2c2d2e;
+        }
+        .info-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            margin-top: 2em;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+            padding: 1em;
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+        }
+        .ai-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+        .lawyer-robot {
+            position: absolute;
+            right: 20px;
+            bottom: -20px;
+            width: 150px;
+            height: 150px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Asklegal</h1>
+        <p>Your AI Legal Assistant for Work Laws</p>
+        <img src="https://replicate.delivery/pbxt/OMkAyAj0AKCCdWmDaNXpxA4oMXA4KQsmcnW4QK0ILBQleHOIA/out-0.png" alt="Simple line drawing of a friendly female lawyer with short hair, wearing glasses and a suit, holding a legal document and smiling" class="lawyer-robot">
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#consultation">Get Consultation</a>
+        <a href="#faq">FAQ</a>
+    </nav>
+    <main>
+        <section class="chat-section" id="chat">
+            <h2>Chat with Asklegal</h2>
+            <div class="chat-window" id="chat-window">
+                <p><img src="ai-icon.png" alt="AI Assistant Icon" class="ai-icon"> Welcome to Asklegal, your friendly AI assistant for work law information. How can I help?</p>
+            </div>
+            <input type="text" class="user-input" id="user-input" placeholder="Type your question here...">
+            <button class="submit-btn" onclick="sendMessage()">Send</button>
+        </section>
+        <section class="info-section">
+            <div id="about">
+                <h2>About Asklegal</h2>
+                <p>Asklegal is an innovative AI-powered platform designed to provide workers with customized, friendly legal information on employment laws. Our digital legal advisor is here to guide you through complex legal matters with ease and approachability.</p>
+            </div>
+            <div id="services" class="hidden">
+                <h2>Our Services</h2>
+                <ul>
+                    <li>24/7 AI-powered legal information on employment laws</li>
+                    <li>Customized guidance on understanding your rights in the workplace</li>
+                    <li>Information on filing claims and complaints</li>
+                    <li>Access to a network of affordable employment law attorneys</li>
+                    <li>Resources and educational materials on workers' rights</li>
+                </ul>
+            </div>
+            <div id="consultation" class="hidden">
+                <h2>Get a Consultation</h2>
+                <p>Need more in-depth advice? We can connect you with an experienced employment law attorney for a low-cost consultation.</p>
+                <button class="submit-btn" onclick="requestConsultation()">Request Human Consultation</button>
+            </div>
+            <div id="faq" class="hidden">
+                <h2>Frequently Asked Questions</h2>
+                <details>
+                    <summary>Is the information provided by Asklegal legally binding?</summary>
+                    <p>No, the information provided by our AI is for general informational purposes only and should not be considered as legal advice. Always consult with a qualified attorney for specific legal matters.</p>
+                </details>
+                <details>
+                    <summary>How accurate is the AI in providing legal information?</summary>
+                    <p>Our AI is regularly updated with the latest employment law information. However, laws can be complex and subject to interpretation. The AI provides a good starting point, but for specific situations, it's best to consult with a human attorney.</p>
+                </details>
+                <details>
+                    <summary>Can Asklegal represent me in court?</summary>
+                    <p>No, Asklegal is an informational tool and cannot represent you in legal proceedings. However, we can provide information about the legal process and connect you with human attorneys if needed.</p>
+                </details>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2023 Asklegal. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById("user-input").value;
+            var chatWindow = document.getElementById("chat-window");
+            if (userInput.trim() !== "") {
+                chatWindow.innerHTML += "<p><strong>You:</strong> " + userInput + "</p>";
+                chatWindow.innerHTML += "<p><img src='ai-icon.png' alt='AI Assistant Icon' class='ai-icon'> I'm processing your question about " + userInput + ". Please allow me a moment to provide you with accurate information based on current employment laws.</p>";
+                document.getElementById("user-input").value = "";
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }
+        }
+
+        function requestConsultation() {
+            alert("Thank you for your interest in a human consultation. We'll connect you with an experienced employment law attorney shortly. Please check your email for further instructions and scheduling options.");
+        }
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('href').substring(1);
+                document.querySelectorAll('.info-section > div').forEach(div => {
+                    div.classList.add('hidden');
+                });
+                document.getElementById(sectionId).classList.remove('hidden');
+            });
+        });
+
+        document.getElementById('user-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
